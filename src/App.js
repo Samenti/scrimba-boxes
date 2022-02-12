@@ -5,13 +5,16 @@ import Box from './components/Box';
 export default function App(props) {
   const [boxArray, setBoxArray] = React.useState(boxes);
 
-  function toggle(event) {
+  function toggle(id) {
     setBoxArray(prevBoxArray => {
       const newArray = [...prevBoxArray];
-      const index = newArray.findIndex(
-        element => element.id == event.target.id
-      );
-      newArray[index].on = !newArray[index].on;
+      // *** this finds the right index of the box with 'id': ***
+      // const index = newArray.findIndex(
+      //   element => element.id == id
+      // );
+      // newArray[index].on = !newArray[index].on;
+      // *** this needs the boxes in the json array to keep order: ***
+      newArray[id-1].on = !newArray[id-1].on
       return (newArray);
     });
   }
@@ -22,7 +25,7 @@ export default function App(props) {
         key={box.id}
         id={box.id}
         on={box.on}
-        toggle={toggle}
+        toggle={()=>toggle(box.id)}
       />
      );
   });
