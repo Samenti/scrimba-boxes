@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function Box(props) {
   const styles = {
-    backgroundColor: props.on ? '#222222' : 'none',
+    backgroundColor: props.on ? '#222222' : 'transparent',
     borderRadius: '5px'
   };
   return (
-    <div style={styles} className="box" />
+    <div id={props.id} style={styles} className="box" onClick={props.toggle} />
   );
 };
