@@ -1,11 +1,18 @@
 import React from 'react';
 
 export default function Box(props) {
+  const [isOn, setIsOn] = React.useState(props.on);
+  
   const styles = {
-    backgroundColor: props.on ? '#222222' : 'none',
+    backgroundColor: isOn ? '#222222' : 'transparent',
     borderRadius: '5px'
   };
+
+  function handleClick() {
+    setIsOn(prevState => !prevState);
+  }
+
   return (
-    <div style={styles} className="box" />
+    <div onClick={handleClick} style={styles} className="box" />
   );
 };
